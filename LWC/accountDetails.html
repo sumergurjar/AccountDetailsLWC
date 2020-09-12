@@ -1,0 +1,70 @@
+<template>
+
+    <lightning-accordion class="example-accordion" active-section-name="one">
+        <lightning-accordion-section name="one" label="Account Detail Section">
+            <lightning-record-form record-id={recordId} object-api-name={objectApiName} fields={fields}>
+            </lightning-record-form>
+        </lightning-accordion-section>
+        <lightning-accordion-section name="two" label="Related Contacts Sections">
+            
+            
+            <lightning-datatable style="display:none;" key-field="id" data={contacts} columns={columns} rendered=false>
+            </lightning-datatable>           
+
+            <p style="font-weight: bold;">Customer Success</p>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="" scope="col">                      
+                      <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Title">Title</div>
+                    </th>      
+                  </tr>
+                </thead>
+                <tbody>
+                    <template for:each={custSuccessContacts} for:item="con">
+                        <tr class="slds-hint-parent" key={con.Id}>     
+                            <td data-label="Account Name">
+                              <div class="slds-truncate" title={con.LastName}>{con.LastName}</div>
+                            </td>
+                            <td data-label="Account Name">
+                              <div class="slds-truncate" title={con.Title}>{con.Title}</div>
+                            </td>      
+                          </tr>
+                    </template>                  
+                </tbody>
+              </table>
+
+              <p style="font-weight: bold;">Application Developers</p>
+            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th class="" scope="col">                      
+                      <div class="slds-truncate" title="Last Name">Last Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Title">Title</div>
+                    </th>      
+                  </tr>
+                </thead>
+                <tbody>
+                    <template for:each={appDevContacts} for:item="con">
+                        <tr class="slds-hint-parent" key={con.Id}>     
+                            <td data-label="Account Name">
+                              <div class="slds-truncate" title={con.LastName}>{con.LastName}</div>
+                            </td>
+                            <td data-label="Account Name">
+                              <div class="slds-truncate" title={con.Title}>{con.Title}</div>
+                            </td>      
+                          </tr>
+                    </template>                  
+                </tbody>
+              </table>            
+
+        </lightning-accordion-section>
+    </lightning-accordion>
+
+
+</template>
